@@ -8,7 +8,7 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private authService: AuthService,
+    private readonly authService: AuthService,
   ) {}
 
   @Get()
@@ -25,7 +25,6 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
-    console.log('t', req);
-    return req.body;
+    return req.user;
   }
 }
